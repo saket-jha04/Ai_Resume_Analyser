@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>✨ AI Resume Analyzer Results ✨</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f0f8ff; }
+        .container { margin-top: 30px; }
+        .result-box { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,.05); margin-bottom: 20px; }
+        h4 { color: #007bff; }
+        h5 { color: #28a745; margin-top: 15px; }
+        .red-flag { color: #dc3545; font-weight: bold; background-color: #fff3cd; /* Yellow background for red flags */
+                   padding: 5px; border-radius: 5px; }
+    </style>
+</head>
+<body class="bg-light">
+<div class="container">
+    <h2 class="text-center mb-4">🤖 AI Resume Analysis 🚀</h2>
+
+    {% if role == 'candidate' %}
+        <div class="result-box">
+            <h4>👤 Candidate Analysis</h4>
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p>📧 <strong>Email:</strong> {{ email }}</p>
+            <p>📞 <strong>Phone:</strong> {{ phone }}</p>
+            <p>🎓 <strong>Education:</strong> {{ education|join(', ') }}</p>
+            <p>💼 <strong>Experience:</strong> {{ exp_years }} years</p>
+            <p>🔑 <strong>Key Skills:</strong> {{ skills|join(', ') }}</p>
+            <p>📝 <strong>Summary:</strong> {{ summary|safe }}</p>
+
+            <h5>💡 Suggestions for Improvement:</h5>
+            {% if suggestions %}
+            <ul>
+                {% for suggestion in suggestions %}
+                <li>{{ suggestion }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No specific suggestions at this time.</p>
+            {% endif %}
+
+            <h5>🎯 Recommended Job Roles:</h5>
+            {% if job_roles %}
+            <ul>
+                {% for job in job_roles %}
+                <li>{{ job }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No job roles recommended.</p>
+            {% endif %}
+
+            <h5>📊 ATS Score:</h5>
+            <p><strong>Score:</strong> {{ ats_score }}/100</p>
+            {% if ats_explanation %}
+            <p><small>{{ ats_explanation }}</small></p>
+            {% endif %}
+
+            {% if red_flags and red_flags != ["None detected"] %}
+            <h5 class="red-flag">🚩 Potential Red Flags:</h5>
+            <ul>
+                {% for flag in red_flags %}
+                <li>{{ flag }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    {% elif role == 'hr' %}
+        <div class="result-box">
+            <h4>🏢 HR Review Insights</h4>
+            <p>👤 <strong>Candidate Name:</strong> {{ name }}</p>
+            <p>📧 <strong>Email:</strong> {{ email }}</p>
+            <p>📞 <strong>Phone:</strong> {{ phone }}</p>
+            <p>🎓 <strong>Education:</strong> {{ education|join(', ') }}</p>
+            <p>💼 <strong>Experience:</strong> {{ exp_years }} years</p>
+            <p>🔑 <strong>Key Skills:</strong> {{ skills|join(', ') }}</p>
+            <p>📝 <strong>Summary:</strong> {{ summary|safe }}</p>
+
+            <h5>🔍 HR Suggestions/Insights:</h5>
+            {% if suggestions %}
+            <ul>
+                {% for suggestion in suggestions %}
+                <li>{{ suggestion }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No specific HR insights at this time.</p>
+            {% endif %}
+
+            <h5>📊 ATS Score:</h5>
+            <p><strong>Score:</strong> {{ ats_score }}/100</p>
+            {% if ats_explanation %}
+            <p><small>{{ ats_explanation }}</small></p>
+            {% endif %}
+
+            {% if red_flags and red_flags != ["None detected"] %}
+            <h5 class="red-flag">🚩 Potential Red Flags:</h5>
+            <ul>
+                {% for flag in red_flags %}
+                <li>{{ flag }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>✨ AI Powered Resume Analyzer ✨</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f0f8ff; }
+        .container { margin-top: 50px; }
+        .analyzer-box { background-color: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,.1); }
+        h2 { color: #007bff; margin-bottom: 30px; }
+        .form-label { font-weight: bold; margin-top: 15px; }
+        .btn-primary { background-color: #007bff; border-color: #007bff; }
+        .btn-primary:hover { background-color: #0056b3; border-color: #0056b3; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="analyzer-box">
+        <h2 class="text-center">🤖 AI Powered Resume Analyzer 🚀</h2>
+        <form method="POST" action="/analyze" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="resumeFile" class="form-label">📄 Upload Your Resume (PDF)</label>
+                <input type="file" name="resume" class="form-control" id="resumeFile" accept=".pdf" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">👤 I am a:</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="role" id="candidateRadio" value="candidate" required>
+                    <label class="form-check-label" for="candidateRadio">Candidate</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="role" id="hrRadio" value="hr" required>
+                    <label class="form-check-label" for="hrRadio">HR Professional</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg w-100">✨ Analyze My Resume ✨</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

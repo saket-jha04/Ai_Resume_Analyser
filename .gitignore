@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyd
+.venv/
+venv/
+
+# Environment variables
+.env
+
+# Uploads directory (if you don't want to track uploaded files)
+uploads/
+
+# OS Specific
+.DS_Store

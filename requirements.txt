@@ -1,0 +1,6 @@
+Flask
+spacy
+pdfplumber
+python-dotenv
+google-generativeai
+Werkzeug
