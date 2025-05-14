@@ -13,6 +13,7 @@ load_dotenv()
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 nlp = spacy.load("en_core_web_sm")
 
 # Configure Gemini API
